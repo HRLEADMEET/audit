@@ -264,7 +264,7 @@ const $ = id => document.getElementById(id);
 // Кнопка в шапке — сразу открывает чат с готовым текстом, без формы
 $('cfgCta').onclick = (e) => {
   e.preventDefault();
-  const msg = 'Здравствуйте! Хочу записаться на бесплатный аудит отдела продаж. \u00abЗаявки теряются не у клиента, а на втором шаге вашей воронки.\u00bb';
+  const msg = 'Здравствуйте! Хочу записаться на бесплатный аудит отдела продаж. «Цель бизнеса одна: создать клиента.» (Питер Друкер)';
   if (typeof ym === 'function') { ym(112489964, 'reachGoal', 'кнопка_сверху_лид'); }
   window.open('https://t.me/vladlev007?text=' + encodeURIComponent(msg), '_blank');
   location.href = 'thanks.html';
@@ -281,7 +281,7 @@ $('submitBtn').onclick = () => {
   if(!contact){ $('errContact').style.display = 'block'; ok = false; } else { $('errContact').style.display = 'none'; }
   if(!ok) return;
 
-  const msg = 'Заявка на бесплатный аудит. \u00abСначала цифры воронки, потом решения.\u00bb\n\n'
+  const msg = 'Заявка на бесплатный аудит. «Большинство решений стоит принимать, когда у вас есть около 70% нужной информации.» (Джефф Безос)\n\n'
     + 'Имя: ' + name + '\n'
     + 'Контакт: ' + contact + '\n'
     + 'Компания: ' + (company || '—') + '\n'
