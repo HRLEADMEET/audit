@@ -171,7 +171,8 @@ a{text-underline-offset:3px}
     </div>
   </div>
 
-  <section>
+  <div class="lm-cityband"><style>.lm-cityband{background:var(--navy);box-shadow:0 0 0 100vmax var(--navy);clip-path:inset(0 -100vmax);padding:0 0 26px}.lm-citycap{color:#C5D3EE;font-size:15px;max-width:60ch;margin:0 0 4px}.lm-citybox{position:relative;height:clamp(270px,40vw,350px)}.lm-citybox canvas{position:absolute;inset:0;width:100%;height:100%;display:block}</style><p class="lm-citycap">Ваш бизнес изнутри: ИИ-агенты ищут и пишут, человек проводит встречу.</p><div class="lm-citybox"><canvas id="lmCity" aria-label="Схема: в центре ваш бизнес, вокруг поиск, исследование, сообщение, встреча и оплата"></canvas></div></div>
+<section>
     <h2>Что закрывает аудит</h2>
     <p class="lead">Это разбор вашей воронки по цифрам, а не общая консультация. 30–40 минут, конкретный план действий.</p>
     <div class="adv">
@@ -251,7 +252,7 @@ const OFFER = {
   h1: 'Отдел продаж теряет лиды — и вы не знаете, на каком этапе',
   lead: 'Бесплатный аудит вашей воронки найма и продаж: где теряются заявки, почему менеджеры не выполняют план и что чинить первым. Без презентаций на час — конкретные цифры по вашей компании.',
   cta: 'Записаться на бесплатный аудит →',
-  utmLabel: 'landing-v1' // метка варианта — попадёт в заявку в Telegram, чтобы отличать тесты
+  utmLabel: 'landing-v1' // больше не уходит в заявку: источник виден по фразе-метке, таблица в метки_заявок.md
 };
 
 document.getElementById('cfgH1').textContent = OFFER.h1;
@@ -263,7 +264,7 @@ const $ = id => document.getElementById(id);
 // Кнопка в шапке — сразу открывает чат с готовым текстом, без формы
 $('cfgCta').onclick = (e) => {
   e.preventDefault();
-  const msg = 'Здравствуйте! Хочу записаться на бесплатный аудит отдела продаж (' + OFFER.utmLabel + ', кнопка сверху).';
+  const msg = 'Здравствуйте! Хочу записаться на бесплатный аудит отдела продаж. \u00abЗаявки теряются не у клиента, а на втором шаге вашей воронки.\u00bb';
   if (typeof ym === 'function') { ym(112489964, 'reachGoal', 'кнопка_сверху_лид'); }
   window.open('https://t.me/vladlev007?text=' + encodeURIComponent(msg), '_blank');
   location.href = 'thanks.html';
@@ -280,7 +281,7 @@ $('submitBtn').onclick = () => {
   if(!contact){ $('errContact').style.display = 'block'; ok = false; } else { $('errContact').style.display = 'none'; }
   if(!ok) return;
 
-  const msg = 'ЗАЯВКА НА АУДИТ с рекламной страницы LEADMEET (' + OFFER.utmLabel + ')\n\n'
+  const msg = 'Заявка на бесплатный аудит. \u00abСначала цифры воронки, потом решения.\u00bb\n\n'
     + 'Имя: ' + name + '\n'
     + 'Контакт: ' + contact + '\n'
     + 'Компания: ' + (company || '—') + '\n'
@@ -300,5 +301,7 @@ $('submitBtn').onclick = () => {
 </script>
 <div class="lm-sticky"><a class="btn" href="#form">Записаться на бесплатный аудит</a></div>
 <script>(function(){var s=document.querySelector('.lm-sticky'),h=document.querySelector('.hero .btn');if(!s)return;if(!h||!('IntersectionObserver' in window)){s.classList.add('show');return}new IntersectionObserver(function(e){s.classList.toggle('show',!e[0].isIntersecting)}).observe(h)})()</script>
+<script src="https://hrleadmeet.github.io/lm-city.js"></script>
+<script>(function(){var c=document.getElementById("lmCity");if(c&&window.LMCity)LMCity.mount(c,{anchor:"center",alpha:1,legend:true})})()</script>
 </body>
 </html>
